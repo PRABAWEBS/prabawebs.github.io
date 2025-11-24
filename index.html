@@ -799,23 +799,22 @@
       color: #e5e7eb;
     }
 
-    /* REVEAL ANIMATIONS */
+   /* REVEAL ANIMATIONS – SAFE VERSION */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px) scale(0.985);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
+/* You can keep this for future JS, but it does nothing bad now */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .reveal[data-delay="1"] { transition-delay: 0.08s; }
-    .reveal[data-delay="2"] { transition-delay: 0.16s; }
-    .reveal[data-delay="3"] { transition-delay: 0.24s; }
-
+/* Optional small delay classes – harmless */
+.reveal[data-delay="1"] { transition-delay: 0s; }
+.reveal[data-delay="2"] { transition-delay: 0s; }
+.reveal[data-delay="3"] { transition-delay: 0s; }
     /* RESPONSIVE */
 
     @media (max-width: 880px) {
@@ -1562,5 +1561,6 @@ ${message}
   </script>
 </body>
 </html>
+
 
 
