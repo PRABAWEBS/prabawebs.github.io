@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PRABA WEBS — Modern websites for modern business</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRABA WEBS — Modern Websites for Modern Business</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --bg: #020617;
-      --text: #f8fafc;
+      --bg-soft: #050a18;
+      --accent: #66b4ff;
+      --accent-strong: #0ea5e9;
+      --accent-soft: rgba(102, 180, 255, 0.22);
+      --text: #e5f0ff;
       --muted: #9ca3af;
-      --accent: #6366f1;
-      --accent2: #0ea5e9;
+      --card: #050b17;
+      --border: rgba(148, 163, 184, 0.35);
+      --radius-xl: 1.5rem;
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.9);
     }
 
     * {
@@ -28,65 +30,100 @@
     }
 
     body {
-      font-family: "Poppins", sans-serif;
-      background: #020617;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 0 0,
+          rgba(37, 99, 235, 0.25),
+          transparent 55%),
+        radial-gradient(circle at 100% 0,
+          rgba(56, 189, 248, 0.15),
+          transparent 55%),
+        #020617;
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* NAV BAR */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 4rem;
+    }
+
+    /* ================= HEADER ================= */
+
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(2, 6, 23, 0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom,
+          rgba(2, 6, 23, 0.95),
+          rgba(2, 6, 23, 0.8),
+          transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
     }
 
     .nav {
-      max-width: 1150px;
-      margin: auto;
-      padding: 0.8rem 1.2rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .logo-pill {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
-      background: rgba(99,102,241,0.13);
-      border: 1px solid rgba(129,140,248,0.4);
-      padding: 0.55rem 1.15rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 22px rgba(79,70,229,0.33);
-      transform: translateY(-6px);
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0,
+          rgba(102, 180, 255, 0.8),
+          #020617 60%);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.7);
       opacity: 0;
-      animation: logoIn 0.6s ease forwards;
+      transform: translateY(-10px) scale(0.95);
+      animation: logo-in 0.8s cubic-bezier(0.16, 0.8, 0.3, 1) forwards;
     }
 
     .logo-main {
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-shadow: 0 0 16px rgba(96, 165, 250, 1);
     }
 
     .logo-tagline {
       font-size: 0.76rem;
-      color: var(--muted);
-      letter-spacing: 0.03em;
+      color: var(--text);
+      opacity: 0.9;
     }
 
-    @keyframes logoIn {
-      from {
+    @keyframes logo-in {
+      0% {
         opacity: 0;
-        transform: translateY(-6px) scale(0.94);
+        transform: translateY(-10px) scale(0.94);
       }
-      to {
+
+      60% {
+        opacity: 1;
+        transform: translateY(0) scale(1.03);
+      }
+
+      100% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
@@ -94,68 +131,675 @@
 
     .nav-links {
       display: flex;
-      gap: 1.3rem;
+      gap: 1.7rem;
+      font-size: 0.88rem;
+      color: var(--muted);
     }
 
     .nav-links a {
-      font-size: 0.88rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: 0.2s ease;
       position: relative;
+      padding-bottom: 0.25rem;
+      transition: color 0.18s ease, transform 0.18s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent2);
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+      transition: width 0.22s ease;
     }
 
-    /* HERO */
-    .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 2.2rem 1.2rem 3rem;
+    .nav-links a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(96, 165, 250, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ================= HERO ================= */
+
+    main {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(59, 130, 246, 0.35), transparent 60%),
+        radial-gradient(circle at 80% 85%, rgba(14, 165, 233, 0.3), transparent 60%);
+      filter: blur(4px);
+      opacity: 0.75;
+      left: -120px;
+      top: 80px;
+      z-index: -2;
+      pointer-events: none;
+      animation: orb-move 18s ease-in-out alternate infinite;
+    }
+
+    @keyframes orb-move {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate3d(40px, 40px, 0) scale(1.08);
+      }
     }
 
     .hero {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2.4rem;
       align-items: center;
-      margin-top: 2rem;
+      padding-top: 2.8rem;
     }
 
-    .hero h1 {
-      font-size: clamp(2.1rem, 5vw, 3.2rem);
-      font-weight: 600;
+    .hero-left h1 {
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(120deg, #e5f0ff, #93c5fd, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-subtitle {
+      font-size: 0.96rem;
       color: var(--muted);
-      margin-top: 0.8rem;
-      max-width: 32rem;
+      max-width: 31rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at 0 0,
+          rgba(148, 163, 184, 0.22),
+          transparent);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease,
+        background 0.18s ease, border-color 0.18s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary {
-      margin-top: 1.5rem;
-      display: inline-block;
-      padding: 0.7rem 1.2rem;
-      border-radius: 1rem;
-      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      background: linear-gradient(135deg, #2563eb, #6366f1, #0ea5e9);
       color: white;
-      font-weight: 500;
-      transition: 0.22s ease;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.75);
     }
 
-    .btn-primary:hover {
-      filter: brightness(1.1);
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(148, 163, 184, 0.7);
+      color: var(--muted);
+    }
+
+    .btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.9);
+      filter: brightness(1.03);
+    }
+
+    .btn:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.95) inset;
+      filter: brightness(0.98);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-stat span {
+      display: block;
+    }
+
+    .hero-stat strong {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .hero-right {
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .hero-panel {
+      position: relative;
+      border-radius: 1.4rem;
+      border: 1px solid rgba(51, 65, 85, 1);
+      background: radial-gradient(circle at 0 0,
+          rgba(56, 189, 248, 0.25),
+          transparent 55%),
+        radial-gradient(circle at 100% 100%,
+          rgba(59, 130, 246, 0.2),
+          transparent 55%),
+        linear-gradient(145deg, #020617, #020617, #020617);
+      box-shadow: var(--shadow-strong);
+      padding: 1.3rem 1.4rem 1.2rem;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transform: rotateX(10deg) rotateY(-12deg);
+      transition: transform 0.2s ease;
+    }
+
+    .hero-panel:hover {
+      transform: rotateX(4deg) rotateY(-4deg) translateY(-4px);
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.9);
+      background: rgba(37, 99, 235, 0.3);
+      color: #e5f0ff;
+    }
+
+    .hero-panel-body {
+      border-radius: 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at 0 0,
+          rgba(37, 99, 235, 0.4),
+          transparent 60%),
+        radial-gradient(circle at 100% 0,
+          rgba(14, 165, 233, 0.3),
+          transparent 60%),
+        #020617;
+      padding: 0.9rem;
+    }
+
+    .mini-graph {
+      height: 140px;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 0 0,
+          rgba(15, 23, 42, 1),
+          #020617);
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      padding: 0.7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-graph::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0,
+          rgba(56, 189, 248, 0.18),
+          transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .mini-graph-header,
+    .mini-graph-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .graph-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.18rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .graph-bar {
+      flex: 1;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    .graph-bar span {
+      display: block;
+      width: 100%;
+      height: var(--h, 50%);
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(to top, #2563eb, #22d3ee);
+      transform-origin: bottom;
+      transform: scaleY(0.15);
+      animation: bar-grow 1s ease forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes bar-grow {
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    .ping-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero-panel-tag {
+      margin-top: 0.8rem;
+      font-size: 0.74rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      margin-top: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0,
+          rgba(15, 23, 42, 0.96),
+          #020617 60%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 26px 65px rgba(15, 23, 42, 0.98);
+      border-color: rgba(129, 140, 248, 0.7);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at 0 0,
+          rgba(59, 130, 246, 0.2),
+          transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.98);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: #e5f0ff;
+    }
+
+    /* ================= FAQ ================= */
+
+    .faq-list {
+      border-radius: 1.2rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at 0 0, #020617, #020617 60%);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(31, 41, 55, 0.95);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      cursor: pointer;
+    }
+
+    .faq-question span {
+      flex: 1;
+      text-align: left;
+    }
+
+    .faq-toggle {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: max-height 0.22s ease-out, padding-bottom 0.22s ease-out;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 140px;
+      padding-bottom: 0.8rem;
+    }
+
+    .faq-item.open .faq-toggle {
+      background: rgba(79, 70, 229, 0.4);
+      color: #e5e7eb;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .contact-card strong {
+      color: var(--text);
+    }
+
+    .contact-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.9rem 0 0.9rem;
+    }
+
+    .contact-chip {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5f0ff;
+    }
+
+    .contact-links p {
+      margin-bottom: 0.35rem;
+      font-size: 0.84rem;
+    }
+
+    .contact-links a {
+      color: #bfdbfe;
+      text-decoration: underline;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.8rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      outline: none;
+      font-size: 0.82rem;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(96, 165, 250, 0.95);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.85);
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    .form-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 880px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ================= TOAST ================= */
+
+    .toast {
+      position: fixed;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      font-size: 0.8rem;
+      color: #bbf7d0;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding-bottom: 1.2rem;
+    }
+
+    footer span {
+      color: #e5f0ff;
+    }
+
+    /* ================= REVEAL ================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-  <body>
 
-  <!-- NAV / HEADER -->
+<body>
+  <div class="orb"></div>
+  <div class="toast" id="toast">Opening WhatsApp…</div>
+
   <header>
     <nav class="nav">
       <div class="logo-pill">
@@ -164,10 +808,10 @@
       </div>
 
       <div class="nav-links">
-        <a href="#top" class="active">Home</a>
+        <a href="#top">Home</a>
         <a href="#services">Services</a>
+        <a href="#showcase">Showcase</a>
         <a href="#process">Process</a>
-        <a href="#why">Why us</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
@@ -176,194 +820,47 @@
 
   <main class="container" id="top">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-left">
         <h1>
-          A professional web development service<br>
-          for small & growing businesses
+          <span class="hero-gradient">High-end websites</span><br />
+          for businesses that want to look serious online.
         </h1>
         <p class="hero-subtitle">
-          I build modern, clean, fast websites that help businesses look professional,
-          attract customers and convert views into sales.
+          PRABA WEBS builds electric-blue, modern, fast websites that make your brand
+          feel premium, trusted and ready for real customers — not just random clicks.
         </p>
 
-        <a class="btn-primary" href="#contact">
-          Let’s build your website →
-        </a>
-      </div>
-
-      <div class="hero-right">
-        <img src="https://via.placeholder.com/420x260.png?text=Your+Website+Preview"
-          style="border-radius:1rem; border:1px solid rgba(255,255,255,0.08); opacity:0.9;">
-      </div>
-    </section>
-    
-<!-- SERVICES -->
-    <section id="services" style="margin-top:4rem;">
-      <h2 style="font-size:1.8rem; font-weight:600;">Services</h2>
-      <p style="color:var(--muted);">What we offer</p>
-
-      <div style="display:grid; gap:1.3rem; margin-top:1.5rem;">
-        
-        <div style="background:#0a0f1e; padding:1.3rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.06);">
-          <h3 style="font-size:1.1rem;">Business Websites</h3>
-          <p style="font-size:0.9rem; color:var(--muted); margin-top:0.3rem;">
-            Professional and modern websites for brands & companies.
-          </p>
+        <div class="hero-badges">
+          <span class="badge">Business & service websites</span>
+          <span class="badge">Landing pages</span>
+          <span class="badge">Portfolio sites</span>
+          <span class="badge">Custom domain & WhatsApp</span>
         </div>
 
-        <div style="background:#0a0f1e; padding:1.3rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.06);">
-          <h3 style="font-size:1.1rem;">Portfolio Websites</h3>
-          <p style="font-size:0.9rem; color:var(--muted); margin-top:0.3rem;">
-            Showcase your work with a clean minimalist portfolio.
-          </p>
-        </div>
-
-        <div style="background:#0a0f1e; padding:1.3rem; border-radius:1rem; border:1px solid rgba(255,255,255,0.06);">
-          <h3 style="font-size:1.1rem;">Landing Pages</h3>
-          <p style="font-size:0.9rem; color:var(--muted); margin-top:0.3rem;">
-            High-converting pages built for lead generation and sales.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- PROCESS -->
-    <section id="process" style="margin-top:4rem;">
-      <h2 style="font-size:1.8rem; font-weight:600;">How it works</h2>
-      <p style="color:var(--muted);">Simple 4-step workflow</p>
-
-      <div style="display:grid; gap:1rem; margin-top:1.5rem;">
-        
-        <div style="background:#07101f; border-radius:1rem; padding:1.1rem; border-left:3px solid var(--accent);">
-          <strong>1. Discussion</strong><br>
-          <span style="color:var(--muted)">We talk about your business and requirements.</span>
-        </div>
-
-        <div style="background:#07101f; border-radius:1rem; padding:1.1rem; border-left:3px solid var(--accent);">
-          <strong>2. Design</strong><br>
-          <span style="color:var(--muted)">I create a layout that matches your brand.</span>
-        </div>
-
-        <div style="background:#07101f; border-radius:1rem; padding:1.1rem; border-left:3px solid var(--accent);">
-          <strong>3. Build</strong><br>
-          <span style="color:var(--muted)">I build the site with clean optimized code.</span>
-        </div>
-
-        <div style="background:#07101f; border-radius:1rem; padding:1.1rem; border-left:3px solid var(--accent);">
-          <strong>4. Launch</strong><br>
-          <span style="color:var(--muted)">We publish your website to your custom domain.</span>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- WHY US -->
-    <section id="why" style="margin-top:4rem;">
-      <h2 style="font-size:1.8rem; font-weight:600;">Why choose PRABA WEBS?</h2>
-
-      <ul style="margin-top:1rem; color:var(--muted); line-height:1.8;">
-        <li>✔ 100% original custom design — no cheap templates</li>
-        <li>✔ Fast-loading, optimized pages</li>
-        <li>✔ Professional & responsive on all devices</li>
-        <li>✔ Clear communication and fast delivery</li>
-        <li>✔ Honest pricing — no overpriced agency fees</li>
-      </ul>
-    </section>
-
-
-    <!-- FAQ -->
-    <section id="faq" style="margin-top:4rem;">
-      <h2 style="font-size:1.8rem; font-weight:600;">FAQ</h2>
-
-      <div style="margin-top:1rem;">
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>How long does it take to build a website?</summary>
-          Usually 5–10 days depending on the complexity.
-        </details>
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>Do I need technical knowledge?</summary>
-          No, I handle everything from development to hosting.
-        </details>
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>Can you create a custom business email?</summary>
-          Yes, ex: contact@yourdomain.com
-        </details>
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>Will my site work on phones?</summary>
-          Yes — all designs are fully mobile responsive.
-        </details>
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>Can you connect my site to WhatsApp or social media?</summary>
-          Yes — I integrate messaging & social links into your site.
-        </details>
-
-        <details style="margin-bottom:0.5rem;">
-          <summary>Do you provide updates after delivery?</summary>
-          Yes — I offer post-launch support and revisions.
-        </details>
-
-      </div>
-    </section>
-    <!-- CONTACT -->
-    <section id="contact" style="margin-top:4rem; margin-bottom:4rem;">
-      <h2 style="font-size:1.8rem; font-weight:600;">Contact</h2>
-      <p style="color:var(--muted);">Send me your requirements</p>
-
-      <div style="margin-top:1.5rem;">
-        <form id="contactForm" onsubmit="sendMessage(event)" style="display:grid; gap:1rem; max-width:420px;">
-
-          <input type="text" id="name" placeholder="Your name" required
-            style="padding:0.7rem; border-radius:0.6rem; background:#08101f; border:1px solid rgba(255,255,255,0.08); color:white;">
-
-          <input type="text" id="business" placeholder="Your business / brand" required
-            style="padding:0.7rem; border-radius:0.6rem; background:#08101f; border:1px solid rgba(255,255,255,0.08); color:white;">
-
-          <textarea id="message" placeholder="What do you want in your website?"
-            style="padding:0.7rem; border-radius:0.6rem; background:#08101f; border:1px solid rgba(255,255,255,0.08); color:white; height:110px;"></textarea>
-
-          <button type="submit" class="btn-primary" style="border:0;">
-            Send via WhatsApp →
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-scroll="#contact">
+            Talk on WhatsApp
           </button>
+          <button class="btn btn-outline" data-scroll="#services">
+            See what I build
+          </button>
+        </div>
 
-        </form>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span><strong>Modern look</strong></span>
+            <span>no outdated layouts</span>
+          </div>
+          <div class="hero-stat">
+            <span><strong>Phone-first</strong></span>
+            <span>built for mobile users</span>
+          </div>
+          <div class="hero-stat">
+            <span><strong>End-to-end</strong></span>
+            <span>design, build, launch</span>
+          </div>
+        </div>
       </div>
-    </section>
 
-  </main>
-
-
-  <!-- WHATSAPP SCRIPT -->
-  <script>
-    function sendMessage(event) {
-      event.preventDefault();
-
-      let name = document.getElementById("name").value;
-      let business = document.getElementById("business").value;
-      let message = document.getElementById("message").value;
-
-      let fullMsg =
-        `Hello, my name is ${name}.\n` +
-        `Business: ${business}.\n\n` +
-        `Project details:\n${message}\n\n` +
-        `I want a website built by PRABA WEBS.`;
-
-      let phone = "919944136436"; 
-      let url = `https://wa.me/${phone}?text=${encodeURIComponent(fullMsg)}`;
-
-      window.open(url, "_blank");
-    }
-  </script>
-
-
-  <!-- END -->
-</body>
-</html>
+    
